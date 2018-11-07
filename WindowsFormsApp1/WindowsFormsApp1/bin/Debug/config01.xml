@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+  <Input>
+    <FileSystem>
+      <Path>'Z:\karthik\CS499\seniorDesign01\SeniorDesign01\SeniorDesign01\bin\Debug\image1.png'</Path>
+      <!-- <Type>JPEG</Type> optional -->
+    </FileSystem>
+    <Hardware>
+      <Name>webcam1</Name>
+      <FileType>jpg</FileType>
+      <CommPort>0</CommPort>
+    </Hardware>
+  </Input>
+  
+  <Process>
+    <Job3>
+      <Name></Name>
+      <PathExe></PathExe>
+    </Job3>
+    <Job>
+      <Name></Name>
+      <PathExe></PathExe>
+    </Job>
+    
+  </Process>
+  
+  
+  <Output>
+    <Console></Console>
+    <GUI></GUI>
+    <FileSystem>
+      <SavePath>'Z:\karthik\CS499\seniorDesign01\SeniorDesign01\SeniorDesign01\bin\Debug\image1.png'</SavePath>
+      <!-- <Type>JPEG</Type> optional -->
+    </FileSystem>
+    <controlSignal></controlSignal>
+  </Output>
+</Root>

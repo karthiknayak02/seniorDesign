@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <input>
+    <fileSystem>
+      <fileType></fileType>
+    </fileSystem>
+    
+    <webcam>
+      <name></name>
+      <fileType></fileType>
+      <commPort></commPort>
+    </webcam>
+  </input>
+
+  <job></job>
+  
+  
+  <output>
+    <console></console>
+    <GUI></GUI>
+    <systemStorage></systemStorage>
+    <controlSignal></controlSignal>
+  </output>
+</config>
