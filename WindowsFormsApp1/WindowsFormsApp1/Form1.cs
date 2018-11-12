@@ -20,13 +20,14 @@ namespace WindowsFormsApp1
     {
         private XElement config_data;
         private string config_file_name = "None";
-        private string input_location = "None";
-        private string output_location = "None";
+        private string input_location;
+        private string output_location;
         private string job_description = "None";
         private string file_extensions = "None";
         private string hardware = "None";
         private string input_type = "None";
         private string output_type = "None";
+        private bool config_file_loaded = false;
 
 
         public Form1()
@@ -77,18 +78,48 @@ namespace WindowsFormsApp1
 
         }
 
+        private bool acceptable_extension(string ext, string[] list)
+        {
+            foreach( string elem in list)
+            {
+                string comp = elem; //new string to compare, gets rid of leading whitespace
+                if(elem[0] == ' ')
+                {
+                    comp = elem.Substring(1, elem.Length - 1);
+                }
+                Console.WriteLine(comp);
+                if (ext.ToLower() == comp.ToLower())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private void selectImage(object sender, EventArgs e)
         {
             DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
             if (result == DialogResult.OK) // Test result.
             {
                 string file = openFileDialog1.FileName;
-                if (result == DialogResult.OK) // Test result.
+                if (config_file_loaded)
                 {
-                    Console.WriteLine(file);
-                    input_location = file;
-                    pictureBox1.Image = Image.FromFile(@file);
+                    if (acceptable_extension(file.Split('.')[1], file_extensions.Split(','))) // Test result.
+                    {
+                        Console.WriteLine(file);
+                        input_location = file;
+                        pictureBox1.Image = Image.FromFile(@file);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Image file must be one of the following file types: {file_extensions}", "Error: Invalid File type");
+                    }
                 }
+                else
+                {
+                    MessageBox.Show("Config file not selected", "Error");
+                }
+                
                 //Console.WriteLine(result); // <-- For debugging use.
             }
             //Console.WriteLine(size); // <-- Shows file size in debugging mode.
@@ -108,6 +139,7 @@ namespace WindowsFormsApp1
                     this.set_xml(current_xml);
                     this.set_config_vars();
                     this.update_config_display();
+                    this.config_file_loaded = true;
                 }
                 else
                 {
@@ -210,7 +242,14 @@ namespace WindowsFormsApp1
         public void process(object sender, EventArgs e)
         {
             run_cmd(@"python", $@"C:\Users\deavin\Documents\school\499CS\opencv_test\process\center_of_shape.py -i {input_location}");
-            pictureBox1.Image = Image.FromFile(@output_location);
+            if(output_location != null && output_location != "")
+            {
+                pictureBox1.Image = Image.FromFile(@output_location);
+            }
+            else
+            {
+                MessageBox.Show("Could not detect shaped in image", "Error");
+            }
         }
     }
 }
