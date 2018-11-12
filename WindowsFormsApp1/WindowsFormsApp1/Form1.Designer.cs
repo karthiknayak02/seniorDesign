@@ -39,7 +39,8 @@
             this.Input = new System.Windows.Forms.Label();
             this.loadButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Trigger = new System.Windows.Forms.Button();
+            this.Process = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -75,8 +76,9 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.DarkGray;
+            this.splitContainer1.Panel2.Controls.Add(this.Process);
             this.splitContainer1.Panel2.Controls.Add(this.pictureBox1);
-            this.splitContainer1.Panel2.Controls.Add(this.button1);
+            this.splitContainer1.Panel2.Controls.Add(this.Trigger);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(844, 468);
             this.splitContainer1.SplitterDistance = 281;
@@ -157,15 +159,25 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // Trigger
             // 
-            this.button1.Location = new System.Drawing.Point(243, 360);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.run_me);
+            this.Trigger.Location = new System.Drawing.Point(167, 388);
+            this.Trigger.Name = "Trigger";
+            this.Trigger.Size = new System.Drawing.Size(75, 23);
+            this.Trigger.TabIndex = 0;
+            this.Trigger.Text = "Trigger";
+            this.Trigger.UseVisualStyleBackColor = true;
+            this.Trigger.Click += new System.EventHandler(this.selectImage);
+            // 
+            // Process
+            // 
+            this.Process.Location = new System.Drawing.Point(331, 388);
+            this.Process.Name = "Process";
+            this.Process.Size = new System.Drawing.Size(75, 23);
+            this.Process.TabIndex = 2;
+            this.Process.Text = "Process";
+            this.Process.UseVisualStyleBackColor = true;
+            this.Process.Click += new System.EventHandler(this.process);
             // 
             // Form1
             // 
@@ -190,7 +202,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button loadButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Trigger;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label Input;
         private System.Windows.Forms.Label Extension;
@@ -198,6 +210,7 @@
         private System.Windows.Forms.Label Hardware;
         private System.Windows.Forms.Label FileName;
         private System.Windows.Forms.Label Job;
+        private System.Windows.Forms.Button Process;
     }
 }
 

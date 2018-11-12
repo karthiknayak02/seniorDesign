@@ -18,3 +18,13 @@ C:\Users\JBS\Documents\GitHub\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\obj
 C:\Users\JBS\Documents\GitHub\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 C:\Users\JBS\Documents\GitHub\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\JBS\Documents\GitHub\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\deavin\Documents\school\499CS\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\deavin\Documents\school\499CS\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\deavin\Documents\school\499CS\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\deavin\Documents\school\499CS\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
+C:\Users\deavin\Documents\school\499CS\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\deavin\Documents\school\499CS\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\deavin\Documents\school\499CS\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\deavin\Documents\school\499CS\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\deavin\Documents\school\499CS\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\deavin\Documents\school\499CS\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb

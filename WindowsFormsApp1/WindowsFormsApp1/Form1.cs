@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using System.Diagnostics;
 
 
 
@@ -19,6 +20,9 @@ namespace WindowsFormsApp1
     {
         private XElement config_data;
         private string config_file_name;
+        private string process_input_location;
+        private string process_output_location;
+
 
         public Form1()
         {
@@ -76,6 +80,7 @@ namespace WindowsFormsApp1
                 if (result == DialogResult.OK) // Test result.
                 {
                     Console.WriteLine(file);
+                    process_input_location = file;
                     pictureBox1.Image = Image.FromFile(@file);
                 }
                 //Console.WriteLine(result); // <-- For debugging use.
@@ -111,6 +116,32 @@ namespace WindowsFormsApp1
             Extension.Text = $"File Extension(s): {config_data.Element("Input").Element("Hardware").Element("FileType").Value}";
             Job.Text = $"Job: {config_data.Element("Process").Element("Job").Element("Name").Value}";
             //Console.WriteLine($"hi: {config_data.Element("Process").Element("Job").Element("Name").Value}");
+        }
+
+        // Execute cmd with filename(args in str if needed) and receive stdout
+        public void run_cmd(string exe, string fileName)
+        {
+            Process p = new Process();
+            p.StartInfo = new ProcessStartInfo(exe, fileName)
+            {
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+            p.Start();
+
+            string output = p.StandardOutput.ReadToEnd();
+            p.WaitForExit();
+            Console.WriteLine($"here <{output}>");
+
+            process_output_location = output;
+
+        }
+
+        public void process(object sender, EventArgs e)
+        {
+            run_cmd(@"python", $@"C:\Users\deavin\Documents\school\499CS\opencv_test\process\center_of_shape.py -i {process_input_location}");
+            pictureBox1.Image = Image.FromFile(@process_output_location);
         }
     }
 }
