@@ -18,6 +18,7 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         private XElement config_data;
+        private string config_file_name;
 
         public Form1()
         {
@@ -92,6 +93,7 @@ namespace WindowsFormsApp1
                 if (1 == 1) // Test result.
                 {
                     XElement current_xml = XElement.Load(@file);
+                    this.config_file_name = file;
                     this.set_xml(current_xml);
                     this.update_config_display();
                 }
@@ -99,15 +101,16 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void update_config_display()
+        private void update_config_display() 
+            //needs a lot of error handling
         {
-            FileName.Text = "File Name: " ;
-            Input.Text = "Input Type: " ;
-            Output.Text = "Output Type: " ;
-            Hardware.Text = "Hardware: " ;
-            Extension.Text = "File Extension(s): " ;
-            Job.Text = "Job: ";
-            Console.WriteLine(config_data.Element("Root").Element("Process").Element("Jobs").Name);
+            FileName.Text = $"File Name: {this.config_file_name.Split('\\')[this.config_file_name.Split('\\').Length-1]}";
+            Input.Text = "Input Type: ";
+            Output.Text = "Output Type: ";
+            Hardware.Text = $"Hardware: {config_data.Element("Input").Element("Hardware").Element("Name").Value}";
+            Extension.Text = $"File Extension(s): {config_data.Element("Input").Element("Hardware").Element("FileType").Value}";
+            Job.Text = $"Job: {config_data.Element("Process").Element("Job").Element("Name").Value}";
+            //Console.WriteLine($"hi: {config_data.Element("Process").Element("Job").Element("Name").Value}");
         }
     }
 }
