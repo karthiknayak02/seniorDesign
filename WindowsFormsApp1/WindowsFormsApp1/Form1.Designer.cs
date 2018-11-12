@@ -31,9 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.FileName = new System.Windows.Forms.Label();
+            this.Job = new System.Windows.Forms.Label();
+            this.Extension = new System.Windows.Forms.Label();
+            this.Output = new System.Windows.Forms.Label();
+            this.Hardware = new System.Windows.Forms.Label();
+            this.Input = new System.Windows.Forms.Label();
             this.loadButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -56,6 +62,12 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.DarkGray;
+            this.splitContainer1.Panel1.Controls.Add(this.FileName);
+            this.splitContainer1.Panel1.Controls.Add(this.Job);
+            this.splitContainer1.Panel1.Controls.Add(this.Extension);
+            this.splitContainer1.Panel1.Controls.Add(this.Output);
+            this.splitContainer1.Panel1.Controls.Add(this.Hardware);
+            this.splitContainer1.Panel1.Controls.Add(this.Input);
             this.splitContainer1.Panel1.Controls.Add(this.loadButton);
             this.splitContainer1.Panel1.Cursor = System.Windows.Forms.Cursors.Default;
             this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
@@ -70,6 +82,60 @@
             this.splitContainer1.SplitterDistance = 281;
             this.splitContainer1.TabIndex = 0;
             // 
+            // FileName
+            // 
+            this.FileName.AutoSize = true;
+            this.FileName.Location = new System.Drawing.Point(89, 86);
+            this.FileName.Name = "FileName";
+            this.FileName.Size = new System.Drawing.Size(86, 13);
+            this.FileName.TabIndex = 6;
+            this.FileName.Text = "File Name: None";
+            // 
+            // Job
+            // 
+            this.Job.AutoSize = true;
+            this.Job.Location = new System.Drawing.Point(89, 281);
+            this.Job.Name = "Job";
+            this.Job.Size = new System.Drawing.Size(56, 13);
+            this.Job.TabIndex = 5;
+            this.Job.Text = "Job: None";
+            // 
+            // Extension
+            // 
+            this.Extension.AutoSize = true;
+            this.Extension.Location = new System.Drawing.Point(89, 242);
+            this.Extension.Name = "Extension";
+            this.Extension.Size = new System.Drawing.Size(115, 13);
+            this.Extension.TabIndex = 4;
+            this.Extension.Text = "File Extension(s): None";
+            // 
+            // Output
+            // 
+            this.Output.AutoSize = true;
+            this.Output.Location = new System.Drawing.Point(89, 164);
+            this.Output.Name = "Output";
+            this.Output.Size = new System.Drawing.Size(98, 13);
+            this.Output.TabIndex = 3;
+            this.Output.Text = "Output Type: None";
+            // 
+            // Hardware
+            // 
+            this.Hardware.AutoSize = true;
+            this.Hardware.Location = new System.Drawing.Point(89, 203);
+            this.Hardware.Name = "Hardware";
+            this.Hardware.Size = new System.Drawing.Size(85, 13);
+            this.Hardware.TabIndex = 2;
+            this.Hardware.Text = "Hardware: None";
+            // 
+            // Input
+            // 
+            this.Input.AutoSize = true;
+            this.Input.Location = new System.Drawing.Point(89, 125);
+            this.Input.Name = "Input";
+            this.Input.Size = new System.Drawing.Size(90, 13);
+            this.Input.TabIndex = 1;
+            this.Input.Text = "Input Type: None";
+            // 
             // loadButton
             // 
             this.loadButton.Location = new System.Drawing.Point(68, 388);
@@ -78,16 +144,7 @@
             this.loadButton.TabIndex = 0;
             this.loadButton.Text = "Load";
             this.loadButton.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(243, 360);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.loadButton.Click += new System.EventHandler(this.load_config);
             // 
             // pictureBox1
             // 
@@ -100,6 +157,16 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(243, 360);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.run_me);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -110,6 +177,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -124,6 +192,12 @@
         private System.Windows.Forms.Button loadButton;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label Input;
+        private System.Windows.Forms.Label Extension;
+        private System.Windows.Forms.Label Output;
+        private System.Windows.Forms.Label Hardware;
+        private System.Windows.Forms.Label FileName;
+        private System.Windows.Forms.Label Job;
     }
 }
 
