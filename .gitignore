@@ -1,2 +1,6 @@
 
 *.lock
+*.ide
+*.ide-shm
+*.cache
+*.ide-wal
