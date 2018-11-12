@@ -1,9 +1,6 @@
 
 *.lock
-WindowsFormsApp1/.vs/WindowsFormsApp1/v15/Server/sqlite3/storage.ide-shm
-WindowsFormsApp1/WindowsFormsApp1/obj/Debug/WindowsFormsApp1.csproj.CoreCompileInputs.cache
-WindowsFormsApp1/.vs/WindowsFormsApp1/v15/Server/sqlite3/storage.ide-shm
-WindowsFormsApp1/.vs/WindowsFormsApp1/v15/.suo
+*.ide
 *.ide-shm
 *.cache
 *.ide-wal
