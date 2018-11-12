@@ -23,6 +23,7 @@ namespace WindowsFormsApp1
         private string input_location;
         private string output_location;
         private string job_description = "None";
+        private string job_path;
         private string file_extensions = "None";
         private string hardware = "None";
         private string input_type = "None";
@@ -182,7 +183,9 @@ namespace WindowsFormsApp1
                 hardware = config_data.Element("Input").Element("Hardware").Attribute("type").Value;
             }
             output_type = config_data.Element("Output").Attribute("type").Value;
+            output_location = config_data.Element("Output").Element("SavePath").Value;
             job_description = config_data.Element("Process").Element("Job").Element("Name").Value;
+            job_path = config_data.Element("Process").Element("Job").Element("PathExe").Value;
 
         }
 
@@ -195,7 +198,6 @@ namespace WindowsFormsApp1
             HardwareLBL.Text = $"Hardware: {hardware}";
             ExtensionLBL.Text = $"File Extension(s): {file_extensions}";
             JobLBL.Text = $"Job: {job_description}";
-            //Console.WriteLine($"hi: {config_data.Element("Process").Element("Job").Element("Name").Value}");
         }
 
         public string get_string_from_file_extensions(string[] ext)
@@ -241,7 +243,17 @@ namespace WindowsFormsApp1
 
         public void process(object sender, EventArgs e)
         {
-            run_cmd(@"python", $@"C:\Users\deavin\Documents\school\499CS\opencv_test\process\center_of_shape.py -i {input_location}");
+            if (output_location == null)
+            {
+                run_cmd(@"python", $@"{job_path} {input_location}");
+            } else
+            {
+                run_cmd(@"python", $@"{job_path} {input_location} -o {output_location}");
+
+            }
+
+
+            Console.WriteLine($"Output: {output_location.Split(':')[0]}");
             if(output_location != null && output_location != "")
             {
                 pictureBox1.Image = Image.FromFile(@output_location);
