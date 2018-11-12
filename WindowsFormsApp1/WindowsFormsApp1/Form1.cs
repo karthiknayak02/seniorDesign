@@ -19,14 +19,20 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         private XElement config_data;
-        private string config_file_name;
-        private string process_input_location;
-        private string process_output_location;
+        private string config_file_name = "None";
+        private string input_location = "None";
+        private string output_location = "None";
+        private string job_description = "None";
+        private string file_extensions = "None";
+        private string hardware = "None";
+        private string input_type = "None";
+        private string output_type = "None";
 
 
         public Form1()
         {
             InitializeComponent();
+            update_config_display();
         }
 
         private void set_xml(XElement new_xml)
@@ -80,7 +86,7 @@ namespace WindowsFormsApp1
                 if (result == DialogResult.OK) // Test result.
                 {
                     Console.WriteLine(file);
-                    process_input_location = file;
+                    input_location = file;
                     pictureBox1.Image = Image.FromFile(@file);
                 }
                 //Console.WriteLine(result); // <-- For debugging use.
@@ -95,27 +101,90 @@ namespace WindowsFormsApp1
             if (result == DialogResult.OK) // Test result.
             {
                 string file = openFileDialog1.FileName;
-                if (1 == 1) // Test result.
+                if (file.Split('.')[1] == "xml") // Test result.
                 {
                     XElement current_xml = XElement.Load(@file);
-                    this.config_file_name = file;
+                    this.config_file_name = file.Split('\\')[file.Split('\\').Length-1];
                     this.set_xml(current_xml);
+                    this.set_config_vars();
                     this.update_config_display();
+                }
+                else
+                {
+                    MessageBox.Show("Config file must be of type \".xml\"", "Error: Invalid File type");
                 }
                 //Console.WriteLine(result); // <-- For debugging use.
             }
         }
 
+        private string get_ext_display()
+        {
+            string result = "";
+            foreach (string typ in config_data.Element("Input").Element("FileTypes").Value.Split('.'))
+            {
+                if(typ != "")
+                {
+                    result += typ + ", ";
+                }
+            }
+            if(result.Length > 3)
+            {
+                return result.Substring(0, result.Length - 2);
+            }
+            return "None";
+        }
+
+        private void set_config_vars()
+        {
+            input_type = config_data.Element("Input").Attribute("type").Value;
+            if (input_type == "File System")
+            {
+                HardwareLBL.Visible = false; // sets which label is shown on screen
+                ExtensionLBL.Visible = true;
+                file_extensions = get_ext_display();
+            }
+            else
+            {
+                HardwareLBL.Visible = true; // sets which label is shown on screen
+                ExtensionLBL.Visible = false;
+                hardware = config_data.Element("Input").Element("Hardware").Attribute("type").Value;
+            }
+            output_type = config_data.Element("Output").Attribute("type").Value;
+            job_description = config_data.Element("Process").Element("Job").Element("Name").Value;
+
+        }
+
         private void update_config_display() 
             //needs a lot of error handling
         {
-            FileName.Text = $"File Name: {this.config_file_name.Split('\\')[this.config_file_name.Split('\\').Length-1]}";
-            Input.Text = "Input Type: ";
-            Output.Text = "Output Type: ";
-            Hardware.Text = $"Hardware: {config_data.Element("Input").Element("Hardware").Element("Name").Value}";
-            Extension.Text = $"File Extension(s): {config_data.Element("Input").Element("Hardware").Element("FileType").Value}";
-            Job.Text = $"Job: {config_data.Element("Process").Element("Job").Element("Name").Value}";
+            FileNameLBL.Text = $"File Name: {config_file_name}";
+            InputLBL.Text = $"Input Type: {input_type}";
+            Output.Text = $"Output Type: {output_type}";
+            HardwareLBL.Text = $"Hardware: {hardware}";
+            ExtensionLBL.Text = $"File Extension(s): {file_extensions}";
+            JobLBL.Text = $"Job: {job_description}";
             //Console.WriteLine($"hi: {config_data.Element("Process").Element("Job").Element("Name").Value}");
+        }
+
+        public string get_string_from_file_extensions(string[] ext)
+        {
+            string r = "";
+            foreach (var e in ext)
+            {
+                if(e != null)
+                {
+                    r += e + ", ";
+                } 
+            }
+            if(r.Length > 3)
+            {
+                return r.Substring(0, r.Length - 3);
+            }
+            else
+            {
+                return "None";
+            }
+            
         }
 
         // Execute cmd with filename(args in str if needed) and receive stdout
@@ -134,14 +203,14 @@ namespace WindowsFormsApp1
             p.WaitForExit();
             Console.WriteLine($"here <{output}>");
 
-            process_output_location = output;
+            output_location = output;
 
         }
 
         public void process(object sender, EventArgs e)
         {
-            run_cmd(@"python", $@"C:\Users\deavin\Documents\school\499CS\opencv_test\process\center_of_shape.py -i {process_input_location}");
-            pictureBox1.Image = Image.FromFile(@process_output_location);
+            run_cmd(@"python", $@"C:\Users\deavin\Documents\school\499CS\opencv_test\process\center_of_shape.py -i {input_location}");
+            pictureBox1.Image = Image.FromFile(@output_location);
         }
     }
 }

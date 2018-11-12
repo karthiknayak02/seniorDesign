@@ -1,37 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Root>
-  <Input>
-    <FileSystem>
-      <Path>'Z:\karthik\CS499\seniorDesign01\SeniorDesign01\SeniorDesign01\bin\Debug\image1.png'</Path>
-      <!-- <Type>JPEG</Type> optional -->
-    </FileSystem>
-    <Hardware>
-      <Name>webcam1</Name>
-      <FileType>jpg</FileType>
-      <CommPort>0</CommPort>
-    </Hardware>
+  <Input type ="File System">
+      <FileTypes>
+        <Type>.jpg</Type>
+        <Type>.jpeg</Type>
+        <Type>.png</Type>
+      </FileTypes>
+    <!--<Hardware type ="webcam"></Hardware>-->
   </Input>
   
   <Process>
-    <Job3>
-      <Name></Name>
-      <PathExe></PathExe>
-    </Job3>
     <Job>
-      <Name>fuck this</Name>
-      <PathExe></PathExe>
+      <Name>Identify Shapes</Name>
+      <PathExe>C:\Users\deavin\Documents\school\499CS\opencv_test\process\center_of_shape.py -i</PathExe>
     </Job>
-    
   </Process>
-  
-  
-  <Output>
-    <Console></Console>
-    <GUI></GUI>
+
+
+  <Output type ="File System">
     <FileSystem>
-      <SavePath>'Z:\karthik\CS499\seniorDesign01\SeniorDesign01\SeniorDesign01\bin\Debug\image1.png'</SavePath>
-      <!-- <Type>JPEG</Type> optional -->
+      <SavePath>'C:\Users\deavin\Documents\school\499CS\seniorDesign\openCV\post-processed'</SavePath>
     </FileSystem>
-    <controlSignal></controlSignal>
   </Output>
 </Root>
