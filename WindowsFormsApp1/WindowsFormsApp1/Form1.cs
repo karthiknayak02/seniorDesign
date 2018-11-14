@@ -24,6 +24,7 @@ namespace WindowsFormsApp1
         private string output_location;
         private string job_description = "None";
         private string job_path;
+        private string job_output;
         private string file_extensions = "None";
         private string hardware = "None";
         private string input_type = "None";
@@ -237,11 +238,12 @@ namespace WindowsFormsApp1
             p.WaitForExit();
             Console.WriteLine($"here <{output}>");
 
-            output_location = output;
+            job_output = output;
 
         }
 
-        public void process(object sender, EventArgs e)
+        public void process(object
+            sender, EventArgs e)
         {
             if (output_location == null)
             {
@@ -253,14 +255,15 @@ namespace WindowsFormsApp1
             }
 
 
-            Console.WriteLine($"Output: {output_location.Split(':')[0]}");
-            if(output_location != null && output_location != "")
+            //Console.WriteLine($"Output: {job_output.Split(':')[0]}");
+            Console.WriteLine($"Path: {job_output}");
+            if(job_output.Substring(0, 6) != "Error:")
             {
-                pictureBox1.Image = Image.FromFile(@output_location);
+                pictureBox1.Image = Image.FromFile(job_output);
             }
             else
             {
-                MessageBox.Show("Could not detect shaped in image", "Error");
+                MessageBox.Show($"{job_output.Substring(7, job_output.Length-7)}", "Error");
             }
         }
     }
