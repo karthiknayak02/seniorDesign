@@ -1,0 +1,10 @@
+C:\Users\deavin\Documents\!school\CS_499\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\deavin\Documents\!school\CS_499\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\deavin\Documents\!school\CS_499\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\deavin\Documents\!school\CS_499\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\GE_Vision_Station.csprojAssemblyReference.cache
+C:\Users\deavin\Documents\!school\CS_499\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\deavin\Documents\!school\CS_499\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\deavin\Documents\!school\CS_499\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\GE_Vision_Station.csproj.GenerateResource.cache
+C:\Users\deavin\Documents\!school\CS_499\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\GE_Vision_Station.csproj.CoreCompileInputs.cache
+C:\Users\deavin\Documents\!school\CS_499\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\deavin\Documents\!school\CS_499\seniorDesign\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
