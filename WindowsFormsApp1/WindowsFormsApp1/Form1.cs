@@ -10,14 +10,18 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using System.Diagnostics;
 
+using Emgu.CV;
+
 
 
 //XElement
 
 namespace WindowsFormsApp1
 {
+
     public partial class Form1 : Form
     {
+
         private XElement config_data;
         private string config_file_name = "None";
         private string input_location;
@@ -30,11 +34,35 @@ namespace WindowsFormsApp1
         private string output_type = "None";
         private bool config_file_loaded = false;
 
+        VideoCapture capture;
+
 
         public Form1()
         {
             InitializeComponent();
             update_config_display();
+            imgTrigger();
+        }
+
+        private void imgTrigger()
+        {
+            try
+            {
+                capture = new VideoCapture();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+
+            Application.Idle += ProcessFrame;
+        }
+
+        private void ProcessFrame(object sender, EventArgs e)
+        {
+            imageBox1.Image = capture.QuerySmallFrame();
         }
 
         private void set_xml(XElement new_xml)
@@ -47,22 +75,22 @@ namespace WindowsFormsApp1
             Console.WriteLine("Linked");
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            int size = -1;
-            DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
-            if (result == DialogResult.OK) // Test result.
-            {
-                string file = openFileDialog1.FileName;
-                if (result == DialogResult.OK) // Test result.
-                {
-                    Console.WriteLine("bustin thru the roof like a AP", file);
-                }
-                Console.WriteLine(result); // <-- For debugging use.
-            }
-            Console.WriteLine(size); // <-- Shows file size in debugging mode.
-            Console.WriteLine(result); // <-- For debugging use.
-        }
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    int size = -1;
+        //    DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
+        //    if (result == DialogResult.OK) // Test result.
+        //    {
+        //        string file = openFileDialog1.FileName;
+        //        if (result == DialogResult.OK) // Test result.
+        //        {
+        //            Console.WriteLine("bustin thru the roof like a AP", file);
+        //        }
+        //        Console.WriteLine(result); // <-- For debugging use.
+        //    }
+        //    Console.WriteLine(size); // <-- Shows file size in debugging mode.
+        //    Console.WriteLine(result); // <-- For debugging use.
+        //}
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
@@ -262,6 +290,11 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("Could not detect shaped in image", "Error");
             }
+        }
+
+        private void imageBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
